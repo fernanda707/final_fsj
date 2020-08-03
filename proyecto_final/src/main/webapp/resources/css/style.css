@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+
+.footer{
+	bottom: 0;
+	 position: absolute;
+	height: 80px;
+}
+.active{
+	background-color: #107685;
+}
+
+.icon-plus{
+	font-size: 35px;
+	color: #82C91E;
+}
+
+.icon-lista{
+	font-size:20px;
+}
+
+.formulario{
+	margin-top: 25px;
+}
