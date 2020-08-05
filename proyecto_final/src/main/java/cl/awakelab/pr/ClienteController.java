@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cl.awakelab.pr.model.Cliente;
 import cl.awakelab.pr.model.Comuna;
+import cl.awakelab.pr.services.ClienteService;
 import cl.awakelab.pr.services.ComunaService;
 
 
@@ -18,6 +20,8 @@ public class ClienteController {
 	
 	@Autowired
 	ComunaService cs;
+	@Autowired
+	ClienteService cls;
 	
 	@RequestMapping(value="/administracion", method=RequestMethod.POST)
 	public ModelAndView administracion() {
@@ -28,11 +32,11 @@ public class ClienteController {
 		
 	}
 	
-	@RequestMapping(value="/listarClientes", method=RequestMethod.POST)
+	@RequestMapping(value="/listarClientes", method=RequestMethod.GET)
 	public ModelAndView listarEmpleados() {
 		
-		
-		return new ModelAndView("listaClientes");
+		List<Cliente> lista = cls.getAll();
+		return new ModelAndView("listaClientes", "lista", lista);
 		
 	}
 	

@@ -17,8 +17,7 @@
 		authentication-failure-url="/error"
 		username-parameter="username"
 		password-parameter="password"
-		/>
-		
+		/>		
 		<csrf/>
 	
 	</http>

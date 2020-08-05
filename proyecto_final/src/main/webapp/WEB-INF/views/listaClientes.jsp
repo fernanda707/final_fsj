@@ -30,7 +30,7 @@
 	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/">Inicio <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white active" href="${pageContext.request.contextPath}/clientes">Clientes</a>
+	        <a class="nav-link text-white active" href="${pageContext.request.contextPath}/listarClientes">Clientes</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/profesionales">Profesionales</a>
@@ -59,17 +59,20 @@
 		      <th scope="col">Razon Social</th>
 		      <th scope="col">Rubro</th>
 		      <th scope="col">Direccion</th>
+		      <th scope="col">N° Colaboradores</th>
 		      <th scope="col">Acciones</th>
 
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach items="${lista}" var="cliente">
 		    <tr>
-		      <th scope="row">1</th>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
+		      <th scope="row">${cliente.getId_cliente()}</th>
+		      <td>${cliente.getRut()}</td>
+		      <td>${cliente.getRazon_social()}</td>
+		      <td>${cliente.getRubro()}</td>
+		      <td>${cliente.getDireccion()}, ${cliente.getComuna().getComuna()}</td>
+		      <td>${cliente.getNum_colaboradores()}</td>
 		      <td>
 		      	<a href="${pageContext.request.contextPath}">
 					<i class="fas fa-trash-alt icon-lista"></i>
@@ -81,6 +84,7 @@
 		      </td>
 
 		    </tr>
+		   </c:forEach>
 		  </tbody>
 		</table>
 	</div>

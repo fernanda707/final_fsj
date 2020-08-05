@@ -26,11 +26,16 @@
 	        <a class="nav-link text-white" href="#">Inicio <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/listaClientes">Clientes</a>
+	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/listarClientes">Clientes</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/profesionales">Profesionales</a>
 	      </li>
+	    </ul>
+	    <ul class="navbar-nav ml-auto">
+	    	<li class="nav-item">
+	    		<a class="nav-link text-white" href="${pageContext.request.contextPath}/logout">Salir</a>
+	    	</li>
 	    </ul>
 	  </div>	 
 	</nav>
