@@ -2,16 +2,21 @@ package cl.awakelab.pr.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="CLIENTE")
 public class Cliente {
 	@Id
-	@Column(name="ID_CLIENTE")
+	//@Column(name="ID_CLIENTE")seq_cliente
+	@SequenceGenerator(name="seq",sequenceName="SEQ_CLIENTE")        
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	private int id_cliente;
 	@Column(name="RAZON_SOCIAL")
 	private String razon_social;

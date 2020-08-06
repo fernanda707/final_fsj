@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,43 +43,50 @@
 	  </div>	 
 	</nav>
 	<!-- ------------------------------FIN MENU -->
-	
-	<form action="${pageContext.request.contextPath}/guardarNuevoCliente" method="post">
+	<c:set var="cliente" value="${cliente}"></c:set>
+	<form:form action="${pageContext.request.contextPath}/guardarCliente" method="post">
+		
+		<input type="hidden" name="id_cliente" value="${cliente.getId_cliente()}">
 		<div class="container formulario">
 		<h3>Agregar Cliente</h3>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 			      <label for="txtRazonSocial">Razon Social</label>
-			      <input type="text" class="form-control form-control-sm" name="txtRazonSocial">
+			      <input type="text" class="form-control form-control-sm" name="razon_social" value="${cliente.getRazon_social()}">
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="txtRut">Rut</label>
-			      <input type="text" class="form-control form-control-sm" name="txtRut">
+			      <input type="text" class="form-control form-control-sm" name="rut" value="${cliente.getRut()}">
 			    </div>
 			    
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">
 			      <label for="txtRubro">Rubro</label>
-			      <input type="text" class="form-control form-control-sm" name="txtRubro">
+			      <input type="text" class="form-control form-control-sm" name="rubro" value="${cliente.getRubro()}">
 			    </div>	    
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 			      <label for="txtDireccion">Direccion</label>
-			      <input type="text" class="form-control form-control-sm" name="txtDireccion">
+			      <input type="text" class="form-control form-control-sm" name="direccion" value="${cliente.getDireccion()}">
 			    </div>
 			    <div class="form-group col-md-1">
 			      <label for="txtNum">Numero colaboradores</label>
-			      <input type="number" class="form-control form-control-sm" name="txtNum">
+			      <input type="number" class="form-control form-control-sm" name="num_colaboradores" value="${cliente.getNum_colaboradores()}">
 			    </div>	    
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">
 				    <label for="slcComuna">Comuna</label>
-				    <select class="form-control form-control-sm" id="slcComuna" name="slcComuna">
+				    <select class="form-control form-control-sm" id="slcComuna" name="id_comuna">
 					    <c:forEach items="${lista}" var="lista">
-					    	<option value="${lista.getId_comuna()}">${lista.getComuna()}</option>
+						    <c:if test="${cliente.getComuna().getId_comuna()==lista.getId_comuna()}">
+						    	<option value="${lista.getId_comuna()}" selected>${lista.getComuna()}</option>
+						    </c:if>
+						    <c:if test="${cliente.getComuna().getId_comuna()!=lista.getId_comuna()}">
+						    	<option value="${lista.getId_comuna()}">${lista.getComuna()}</option>
+						    </c:if>
 					    </c:forEach>
 				    </select>
 			 	</div>
@@ -87,14 +95,13 @@
 			</div>
 			
 			<div class="form-group">
-			 		<button type="submit" class="btn btn-primary">Guardar</button>
-		
+				<input class="btn btn-primary" type="submit" value="Guardar">
 			</div>
 			
 			
 		</div>
 		
-	</form>
+	</form:form>
 	
 	<!-- INICIO FOOTER -->
 	<div class="container-fluid bg-info footer">

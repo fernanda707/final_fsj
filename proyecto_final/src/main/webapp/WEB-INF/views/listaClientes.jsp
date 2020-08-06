@@ -44,11 +44,19 @@
 	  </div>	 
 	</nav>
 	<!-- ------------------------------FIN MENU -->
-	<div class="container text-right">
+	<!-- <div class="alert alert-success" role="alert">
+	  Agregado correctamente
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div> -->
+	
+	<div class="container text-right">	
     <a href="${pageContext.request.contextPath}/nuevoCliente" class="btn btn-default">
 		<i class="fas fa-plus icon-plus"></i>
 	</a>
 	</div>
+	
 	
 	<div class="container table-responsive-lg">
 		<table class="table table-hover">
@@ -74,10 +82,34 @@
 		      <td>${cliente.getDireccion()}, ${cliente.getComuna().getComuna()}</td>
 		      <td>${cliente.getNum_colaboradores()}</td>
 		      <td>
-		      	<a href="${pageContext.request.contextPath}">
+		      	<a data-toggle="modal" data-target="#modalEliminar${cliente.getId_cliente()}">
 					<i class="fas fa-trash-alt icon-lista"></i>
-				</a>  
-				<a href="${pageContext.request.contextPath}" >
+				</a>
+				<!-- MODAL ELIMINAR -->
+				  	<div class="modal fade" id="modalEliminar${cliente.getId_cliente()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        Esta seguro que desea eliminar el registro #${cliente.getId_cliente()}?
+					      </div>
+					      <div class="modal-footer">
+					      
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        </a>
+					        <a href="${pageContext.request.contextPath}/eliminarCliente/${cliente.getId_cliente()}">
+					        	<button type="button" class="btn btn-primary">Eliminar</button>
+					        </a>
+					      </div>
+					    </div>
+					  </div>
+					</div>		
+				<a href="${pageContext.request.contextPath}/mostrarCliente/${cliente.getId_cliente()}" >
 					<i class="fas fa-edit icon-lista"></i>
 				</a>
 		      
@@ -95,7 +127,6 @@
 	  	© 2020 | Fernanda Quijada - Todos los derechos reservados
 	  	</div>
 	</div>
-	
-		
+
 </body>
 </html>
