@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item active">
+	      <li class="nav-item">
 	        <a class="nav-link text-white" href="#">Inicio <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
@@ -39,10 +42,50 @@
 	    </ul>
 	  </div>	 
 	</nav>
-		  <!-- ------------------------------FIN MENU -->
-
+	<!-- ------------------------------FIN MENU -->
+	<c:set var="p" value="${p}"></c:set>
+	<form:form action="${pageContext.request.contextPath}/guardarProfesional" method="post">
+		
+		<div class="container formulario">
+		<h3>Agregar Profesional</h3>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+			      <label for="txtRazonSocial">Rut</label>
+			      <input type="text" class="form-control form-control-sm" name="rut" >
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="txtRut">Nombre</label>
+			      <input type="text" class="form-control form-control-sm" name="nombre">
+			    </div>
+			    
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+			      <label for="txtRubro">Apellido Paterno</label>
+			      <input type="text" class="form-control form-control-sm" name="ap_paterno" >
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="txtDireccion">Apellido Materno</label>
+			      <input type="text" class="form-control form-control-sm" name="ap_materno">
+			    </div>	    
+			</div>
+			<div class="form-row">
+				
+			    <div class="form-group col-md-1">
+			      <label for="txtNum">Edad</label>
+			      <input type="number" class="form-control form-control-sm" name="edad">
+			    </div>	    
+			</div>
+			
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" value="Guardar">
+			</div>		
+			
+		</div>
+		
+	</form:form>
 	
-	 <!-- INICIO FOOTER -->
+	<!-- INICIO FOOTER -->
 	<div class="container-fluid bg-info footer">
 		<div class="container text-white text-center">
 	  	© 2020 | Fernanda Quijada - Todos los derechos reservados

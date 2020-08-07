@@ -28,11 +28,11 @@
 	      <li class="nav-item">
 	        <a class="nav-link text-white" href="#">Inicio <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/clientes">Clientes</a>
+	      <li class="nav-item">
+	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/listarClientes">Clientes</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/profesionales">Profesionales</a>
+	        <a class="nav-link text-white" href="${pageContext.request.contextPath}/listaProfesionales">Profesionales</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">

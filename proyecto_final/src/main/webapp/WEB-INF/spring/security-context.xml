@@ -8,10 +8,10 @@
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http use-expressions="true" auto-config="true">
+	<http use-expressions="true">
 		
 		<intercept-url pattern="/logout" access="permitAll" />
-		<intercept-url pattern="/" access="isAuthenticated()" />
+		<intercept-url pattern="/" access="hasAuthority('ADMIN')" />
 		<intercept-url pattern="/guardarNuevoCliente" access="hasAuthority('ADMIN')" />
 		
 

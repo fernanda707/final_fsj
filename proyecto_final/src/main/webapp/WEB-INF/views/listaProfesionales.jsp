@@ -52,7 +52,7 @@
 	</div> -->
 	
 	<div class="container text-right">	
-    <a href="${pageContext.request.contextPath}/nuevoCliente" class="btn btn-default">
+    <a href="${pageContext.request.contextPath}/nuevoProfesional" class="btn btn-default">
 		<i class="fas fa-plus icon-plus"></i>
 	</a>
 	</div>
@@ -64,58 +64,56 @@
 		    <tr>
 		      <th scope="col">#</th>
 		      <th scope="col">Rut</th>
-		      <th scope="col">Razon Social</th>
-		      <th scope="col">Rubro</th>
-		      <th scope="col">Direccion</th>
-		      <th scope="col">N° Colaboradores</th>
+		      <th scope="col">Nombre Completo</th>
+		      <th scope="col">edad</th>
 		      <th scope="col">Acciones</th>
 
 		    </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach items="${lista}" var="cliente">
+		  <c:forEach items="${lista}" var="per">
+		  <c:if test="${per.es_profesional eq '1'.charAt(0)}">
 		    <tr>
-		      <th scope="row">${cliente.getId_cliente()}</th>
-		      <td>${cliente.getRut()}</td>
-		      <td>${cliente.getRazon_social()}</td>
-		      <td>${cliente.getRubro()}</td>
-		      <td>${cliente.getDireccion()}, ${cliente.getComuna().getComuna()}</td>
-		      <td>${cliente.getNum_colaboradores()}</td>
+		      <th scope="row">${per.getId_persona()}</th>
+		      <td>${per.getRut()}</td>
+		      <td>${per.getNombre()} ${per.getAp_paterno()} ${per.getAp_materno()}</td>
+		      <td>${per.getEdad()}</td>
 		      <td>
-		      	<a data-toggle="modal" data-target="#modalEliminar${cliente.getId_cliente()}">
+		      	<a data-toggle="modal" data-target="#modalEliminar${per.getId_persona()}">
 					<i class="fas fa-trash-alt icon-lista"></i>
 				</a>
 				<!-- MODAL ELIMINAR -->
-				  	<div class="modal fade" id="modalEliminar${cliente.getId_cliente()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  	<div class="modal fade" id="modalEliminar${per.getId_persona()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+					        <h5 class="modal-title" id="exampleModalLabel">Eliminar Profesional</h5>
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					          <span aria-hidden="true">&times;</span>
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					        Esta seguro que desea eliminar el registro #${cliente.getId_cliente()}?
+					        Esta seguro que desea eliminar el registro #${per.getId_persona()}?
 					      </div>
 					      <div class="modal-footer">
 					      
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					        </a>
-					        <a href="${pageContext.request.contextPath}/eliminarCliente/${cliente.getId_cliente()}">
+					        <a href="${pageContext.request.contextPath}/eliminarPersona/${per.getId_persona()}">
 					        	<button type="button" class="btn btn-primary">Eliminar</button>
 					        </a>
 					      </div>
 					    </div>
 					  </div>
 					</div>		
-				<a href="${pageContext.request.contextPath}/mostrarCliente/${cliente.getId_cliente()}" >
+				<a href="${pageContext.request.contextPath}/mostrarProfesional/${per.getId_persona()}" >
 					<i class="fas fa-edit icon-lista"></i>
 				</a>
 		      
 		      </td>
 
 		    </tr>
+		    </c:if>
 		   </c:forEach>
 		  </tbody>
 		</table>
