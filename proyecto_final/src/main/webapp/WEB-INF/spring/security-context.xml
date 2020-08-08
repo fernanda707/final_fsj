@@ -11,8 +11,8 @@
 	<http use-expressions="true">
 		
 		<intercept-url pattern="/logout" access="permitAll" />
-		<intercept-url pattern="/" access="hasAuthority('ADMIN')" />
-		<intercept-url pattern="/guardarNuevoCliente" access="hasAuthority('ADMIN')" />
+		<intercept-url pattern="/" access="isAuthenticated()" />
+		<!--  <intercept-url pattern="/guardarNuevoCliente" access="hasAuthority('ADMIN')" />-->
 		
 
 		<form-login login-page="/login"
@@ -27,9 +27,13 @@
 	<authentication-manager>
 		<authentication-provider>
 			<password-encoder hash="bcrypt"/>
-			<user-service>
+			<!--  <user-service>
 				<user name="admin" password="$2a$10$5k4A.mcnKBASYfMNLde5Lu8uH4JnpfY7sBIsL35NFccESmFQfdksW" authorities="ADMIN"/>
-			</user-service>
+			</user-service>-->
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password,enabled, cliente_id_cliente from users where username = ?"
+				authorities-by-username-query="select username, authority from authorities where username = ?"
+			/>
 			
 		</authentication-provider>
 	</authentication-manager>
